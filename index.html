@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LAST SIGNAL — Nucky Duck Gaming</title>
+<meta name="description" content="LAST SIGNAL — a neon sci-fi tower defense. Hold the wall. Keep broadcasting. Coming soon to Google Play.">
+<link rel="icon" type="image/png" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#060b16; --navy:#0a1428; --steel:#111d33; --steel-hi:#1c2d48;
+  --plate:#6c788a; --cyan:#48beff; --cyan-hi:#8fe3ff; --orange:#ff8c30;
+  --red:#ff4434; --pale:#def1e8; --gold:#ffcf4d;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--void); color:var(--pale);
+  font-family:'Rajdhani',system-ui,sans-serif; font-size:18px; line-height:1.6;
+  background-image:
+    linear-gradient(rgba(72,190,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(72,190,255,.045) 1px, transparent 1px),
+    radial-gradient(ellipse at 50% -10%, #12233f 0%, var(--void) 60%);
+  background-size:44px 44px, 44px 44px, 100% 100%;
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+h1,h2,h3{font-family:'Orbitron',sans-serif; letter-spacing:.06em}
+img{max-width:100%; image-rendering:pixelated}
+
+/* ---- neon text, same trick as in-game ---- */
+.neon{
+  color:#fff;
+  text-shadow:0 0 6px var(--cyan-hi), 0 0 18px var(--cyan), 0 0 42px rgba(72,190,255,.65), 0 0 80px rgba(72,190,255,.35);
+}
+.neon-orange{color:#fff; text-shadow:0 0 6px #ffd9ad, 0 0 16px var(--orange), 0 0 40px rgba(255,140,48,.5)}
+
+/* ---- nav ---- */
+nav{
+  position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:1.4rem;
+  padding:.7rem 5vw; background:rgba(6,11,22,.86); backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(72,190,255,.25);
+}
+nav .brand{font-family:'Orbitron'; font-weight:900; font-size:1.05rem; color:var(--cyan-hi); text-decoration:none; letter-spacing:.12em}
+nav a.link{color:var(--plate); text-decoration:none; font-weight:600; letter-spacing:.08em; font-size:.95rem}
+nav a.link:hover{color:var(--cyan-hi)}
+nav .spacer{flex:1}
+
+/* ---- hero ---- */
+.hero{
+  min-height:88vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:4rem 5vw 3rem; position:relative;
+}
+.hero h1{font-size:clamp(2.6rem,8vw,5.4rem); font-weight:900; letter-spacing:.12em}
+.hero .tag{margin-top:1rem; font-size:clamp(1.05rem,2.6vw,1.5rem); color:var(--cyan-hi); letter-spacing:.2em; text-transform:uppercase; font-weight:500}
+.hero .turret{
+  margin-top:2.6rem; width:min(300px,58vw); filter:drop-shadow(0 0 26px rgba(72,190,255,.55));
+  animation:bob 4.2s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.soon{
+  display:inline-block; margin-top:2.4rem; padding:.65rem 1.6rem;
+  border:1px solid var(--cyan); border-radius:4px; color:var(--cyan-hi);
+  letter-spacing:.22em; font-weight:600; font-size:.95rem; text-transform:uppercase;
+  box-shadow:0 0 18px rgba(72,190,255,.35), inset 0 0 18px rgba(72,190,255,.12);
+}
+
+/* ---- energy wall divider ---- */
+.wall{
+  height:130px; background:url("assets/wall.png") repeat-x bottom/auto 130px;
+  filter:drop-shadow(0 -6px 24px rgba(72,190,255,.4));
+  animation:wallpulse 3.4s ease-in-out infinite;
+}
+@keyframes wallpulse{0%,100%{filter:brightness(.95) drop-shadow(0 -6px 22px rgba(72,190,255,.35))}50%{filter:brightness(1.22) drop-shadow(0 -6px 34px rgba(72,190,255,.6))}}
+
+/* ---- sections ---- */
+section{padding:5rem 5vw; max-width:1100px; margin:0 auto}
+section h2{font-size:clamp(1.5rem,4vw,2.3rem); margin-bottom:.6rem; text-align:center}
+section .sub{color:var(--plate); text-align:center; max-width:640px; margin:0 auto 3rem; font-size:1.05rem}
+
+/* chrome-framed cards: the game's actual generated frame, sliced like Unity does */
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem}
+.card{
+  border:26px solid transparent;
+  border-image:url("assets/frame.png") 150 fill / 26px stretch;
+  background:linear-gradient(180deg, rgba(28,45,72,.72), rgba(10,20,40,.9)) padding-box;
+  padding:1.2rem 1.1rem 1.4rem; text-align:center;
+}
+.card img.glyph{width:64px; height:64px; object-fit:contain; margin-bottom:.8rem; filter:drop-shadow(0 0 10px rgba(72,190,255,.45))}
+.card h3{font-size:1.02rem; color:var(--cyan-hi); letter-spacing:.12em; margin-bottom:.55rem; text-transform:uppercase}
+.card p{color:var(--pale); font-size:.98rem; opacity:.9}
+
+/* ---- screenshots ---- */
+.shots{display:flex; flex-wrap:wrap; gap:2.6rem; justify-content:center; align-items:flex-start}
+.phone{
+  padding:12px; border-radius:26px; background:linear-gradient(180deg,#1c2d48,#0a1428);
+  border:1px solid rgba(108,120,138,.55); box-shadow:0 18px 50px rgba(0,0,0,.55), 0 0 34px rgba(72,190,255,.14);
+}
+.phone img{display:block; width:min(280px,72vw); border-radius:14px}
+.shots figcaption{margin-top:.9rem; text-align:center; color:var(--plate); letter-spacing:.14em; font-size:.85rem; text-transform:uppercase}
+
+/* ---- roadmap strip ---- */
+.roadmap{display:flex; flex-wrap:wrap; gap:1rem; justify-content:center}
+.chip{
+  padding:.5rem 1.15rem; border:1px solid rgba(108,120,138,.6); border-radius:999px;
+  color:var(--pale); letter-spacing:.1em; font-weight:600; font-size:.9rem; text-transform:uppercase;
+}
+.chip.now{border-color:var(--cyan); color:var(--cyan-hi); box-shadow:0 0 14px rgba(72,190,255,.3)}
+.chip.later{opacity:.65}
+
+/* ---- footer ---- */
+footer{
+  margin-top:4rem; padding:3rem 5vw 3.4rem; text-align:center;
+  border-top:1px solid rgba(72,190,255,.2); background:rgba(6,11,22,.7);
+}
+footer .duck{font-family:'Orbitron'; font-weight:700; letter-spacing:.18em; color:var(--pale); margin-bottom:.8rem}
+footer a{color:var(--cyan-hi); text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .fine{margin-top:1.1rem; color:var(--plate); font-size:.85rem}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#top">LAST SIGNAL</a>
+  <span class="spacer"></span>
+  <a class="link" href="#features">Features</a>
+  <a class="link" href="#media">Media</a>
+  <a class="link" href="#roadmap">Roadmap</a>
+  <a class="link" href="privacy.html">Privacy</a>
+</nav>
+
+<header class="hero" id="top">
+  <h1 class="neon">LAST&nbsp;SIGNAL</h1>
+  <p class="tag">Hold the wall &middot; Keep broadcasting</p>
+  <img class="turret" src="assets/turret.png" alt="The Warden Sol turret, cyan core glowing">
+  <span class="soon neon-orange">Coming soon to Google Play</span>
+</header>
+
+<div class="wall" role="presentation"></div>
+
+<section id="features">
+  <h2 class="neon">The last tower standing</h2>
+  <p class="sub">A neon sci-fi tower defense where every run is provably fair, every build is yours, and the wall between you and the static is all that's left.</p>
+  <div class="cards">
+    <div class="card">
+      <img class="glyph" src="assets/turret.png" alt="">
+      <h3>Build your arsenal</h3>
+      <p>Draft turrets mid-run, hunt gear with real damage types &mdash; laser, fire, cryo, electric &mdash; and shape a different build every time the signal fades.</p>
+    </div>
+    <div class="card">
+      <img class="glyph" src="assets/diamond.png" alt="">
+      <h3>Provably fair runs</h3>
+      <p>Combat is fully deterministic &mdash; the same seed always plays out the same. Daily Challenge leaderboards you can actually trust.</p>
+    </div>
+    <div class="card">
+      <img class="glyph" src="assets/coin.png" alt="">
+      <h3>Come back tomorrow</h3>
+      <p>Daily rewards, a season pass with a legendary chest at the end, and elite hunts deeper into the campaign. The broadcast never really stops.</p>
+    </div>
+  </div>
+</section>
+
+<section id="media">
+  <h2 class="neon">Transmissions</h2>
+  <p class="sub">Straight from the build &mdash; the energy wall holding, and a reward track worth coming back for.</p>
+  <div class="shots">
+    <figure>
+      <div class="phone"><img src="assets/shot-combat.png" alt="Combat: the cyan energy wall holds the line as enemies advance"></div>
+      <figcaption>Hold the wall</figcaption>
+    </figure>
+    <figure>
+      <div class="phone"><img src="assets/shot-daily.png" alt="The daily reward track with chrome-framed reward cards"></div>
+      <figcaption>Daily rewards</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="roadmap">
+  <h2 class="neon">Signal roadmap</h2>
+  <p class="sub">Where the broadcast goes next.</p>
+  <div class="roadmap">
+    <span class="chip now">Open beta</span>
+    <span class="chip">Campaign to stage 100</span>
+    <span class="chip">Elite enemies</span>
+    <span class="chip">Quest-driven season pass</span>
+    <span class="chip later">Guilds &amp; raid bosses</span>
+    <span class="chip later">PvP</span>
+  </div>
+</section>
+
+<footer>
+  <div class="duck">NUCKY DUCK GAMING</div>
+  <div>
+    <a href="mailto:nuckyduckgaming@gmail.com">nuckyduckgaming@gmail.com</a>
+    &nbsp;&middot;&nbsp;
+    <a href="privacy.html">Privacy policy</a>
+  </div>
+  <p class="fine">&copy; 2026 Nucky Duck Gaming. LAST SIGNAL is in development; screenshots are from a work-in-progress build.</p>
+</footer>
+
+</body>
+</html>
