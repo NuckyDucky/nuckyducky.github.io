@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#060b16">
+<title>Join the LAST SIGNAL Closed Beta</title>
+<meta name="description" content="Request access to the LAST SIGNAL closed Android beta. Only your Google Play email is needed.">
+<link rel="icon" type="image/png" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#060b16; --navy:#0a1428; --steel:#111d33; --steel-hi:#1c2d48;
+  --plate:#8a97aa; --cyan:#48beff; --cyan-hi:#8fe3ff; --orange:#ff8c30;
+  --red:#ff5b4d; --pale:#def1e8; --green:#61e3ac;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh; color:var(--pale); background:var(--void);
+  font-family:'Rajdhani',system-ui,sans-serif; font-size:18px; line-height:1.55;
+  background-image:
+    linear-gradient(rgba(72,190,255,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(72,190,255,.045) 1px,transparent 1px),
+    radial-gradient(ellipse at 50% -10%,#12233f 0%,var(--void) 62%);
+  background-size:44px 44px,44px 44px,100% 100%;
+  background-attachment:fixed; overflow-x:hidden;
+}
+h1,h2,h3{font-family:'Orbitron',sans-serif;letter-spacing:.06em}
+a{color:var(--cyan-hi)}
+img{max-width:100%;image-rendering:pixelated}
+button,input{font:inherit}
+[hidden]{display:none!important}
+
+.neon{
+  color:#fff;
+  text-shadow:0 0 6px var(--cyan-hi),0 0 18px var(--cyan),0 0 42px rgba(72,190,255,.65),0 0 80px rgba(72,190,255,.35);
+}
+
+nav{
+  position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1.2rem;
+  padding:.75rem 5vw;background:rgba(6,11,22,.88);backdrop-filter:blur(9px);
+  border-bottom:1px solid rgba(72,190,255,.25);
+}
+nav .brand{
+  font-family:'Orbitron',sans-serif;font-weight:900;font-size:1rem;color:var(--cyan-hi);
+  text-decoration:none;letter-spacing:.12em;
+}
+nav .spacer{flex:1}
+nav .return{color:var(--plate);text-decoration:none;font-weight:600;letter-spacing:.08em;font-size:.92rem}
+nav .return:hover{color:var(--cyan-hi)}
+
+main{width:min(1120px,100%);margin:0 auto;padding:clamp(2.3rem,7vw,5.5rem) 5vw 4.5rem}
+.beta-layout{display:grid;grid-template-columns:minmax(0,.92fr) minmax(330px,1.08fr);gap:clamp(2rem,6vw,5rem);align-items:center}
+
+.briefing{text-align:left}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1rem;color:var(--orange);
+  font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+}
+.eyebrow::before{
+  content:"";width:9px;height:9px;border-radius:50%;background:var(--orange);
+  box-shadow:0 0 12px rgba(255,140,48,.9);animation:pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.55;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+.briefing h1{font-size:clamp(2.2rem,6vw,4.65rem);line-height:1.07;letter-spacing:.08em}
+.lead{margin-top:1.25rem;max-width:620px;color:#d7e7e2;font-size:clamp(1.03rem,2.2vw,1.24rem)}
+.turret-wrap{display:flex;align-items:center;gap:1.35rem;margin:2rem 0 1.75rem}
+.turret{width:min(155px,34vw);filter:drop-shadow(0 0 24px rgba(72,190,255,.5));animation:bob 4.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.transmission{padding:1rem 1.1rem;border-left:2px solid var(--cyan);background:rgba(72,190,255,.065);color:#cbdad7}
+.transmission strong{display:block;margin-bottom:.15rem;color:var(--cyan-hi);font-family:'Orbitron',sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+.requirements{display:grid;gap:.75rem;margin-top:1.4rem}
+.requirement{display:flex;gap:.8rem;align-items:flex-start;color:#c4d3d0}
+.requirement .mark{color:var(--cyan-hi);font-family:'Orbitron',sans-serif;font-weight:900;line-height:1.5}
+
+.form-shell{
+  position:relative;padding:clamp(1.4rem,4vw,2.4rem);border:1px solid rgba(72,190,255,.42);border-radius:9px;
+  background:linear-gradient(180deg,rgba(28,45,72,.84),rgba(10,20,40,.96));
+  box-shadow:0 22px 70px rgba(0,0,0,.5),0 0 40px rgba(72,190,255,.13),inset 0 0 40px rgba(72,190,255,.035);
+  overflow:hidden;
+}
+.form-shell::before{
+  content:"";position:absolute;inset:0 0 auto;height:2px;
+  background:linear-gradient(90deg,transparent,var(--cyan-hi),transparent);opacity:.9;
+}
+.form-shell h2{font-size:clamp(1.35rem,4vw,2rem);color:#fff;margin-bottom:.45rem}
+.form-intro{color:var(--plate);margin-bottom:1.8rem}
+.field{margin-bottom:1.15rem}
+label{
+  display:block;margin-bottom:.42rem;color:var(--cyan-hi);font-family:'Orbitron',sans-serif;
+  font-size:.74rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+}
+input[type="email"]{
+  width:100%;min-height:52px;padding:.78rem .95rem;color:#fff;background:rgba(6,11,22,.82);
+  border:1px solid rgba(138,151,170,.62);border-radius:5px;outline:none;
+  transition:border-color .15s ease,box-shadow .15s ease,background .15s ease;
+}
+input::placeholder{color:#6f7c8f}
+input:focus{border-color:var(--cyan);background:rgba(6,11,22,.98);box-shadow:0 0 0 3px rgba(72,190,255,.1),0 0 18px rgba(72,190,255,.13)}
+.help{margin-top:.42rem;color:var(--plate);font-size:.87rem}
+.honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.submit{
+  width:100%;min-height:56px;margin-top:.45rem;padding:.85rem 1rem;cursor:pointer;
+  border:1px solid var(--cyan);border-radius:5px;background:rgba(72,190,255,.13);color:#fff;
+  font-family:'Orbitron',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  box-shadow:0 0 18px rgba(72,190,255,.3),inset 0 0 18px rgba(72,190,255,.06);
+  transition:transform .15s ease,background .15s ease,box-shadow .15s ease,opacity .15s ease;
+}
+.submit:hover:not(:disabled){transform:translateY(-2px);background:rgba(72,190,255,.22);box-shadow:0 0 30px rgba(72,190,255,.47),inset 0 0 22px rgba(72,190,255,.09)}
+.submit:disabled{cursor:wait;opacity:.7}
+.form-status{min-height:1.4em;margin-top:.85rem;text-align:center;color:var(--red);font-size:.9rem}
+.privacy-note{margin-top:1.15rem;color:var(--plate);font-size:.83rem;text-align:center}
+.privacy-note a{text-decoration:none}
+.privacy-note a:hover{text-decoration:underline}
+
+.success{text-align:center;padding:1.1rem .3rem .3rem;outline:none}
+.success-icon{
+  width:76px;height:76px;margin:0 auto 1.3rem;display:grid;place-items:center;border-radius:50%;
+  border:1px solid var(--green);color:var(--green);font-family:'Orbitron',sans-serif;font-size:2rem;font-weight:900;
+  background:rgba(97,227,172,.07);box-shadow:0 0 26px rgba(97,227,172,.27),inset 0 0 20px rgba(97,227,172,.08);
+}
+.success h2{color:#fff;margin-bottom:.7rem}
+.success p{color:#cbdad7;max-width:430px;margin:0 auto}
+.success .small{margin-top:1rem;color:var(--plate);font-size:.9rem}
+.success .back-button{
+  display:inline-block;margin-top:1.6rem;padding:.72rem 1.2rem;border:1px solid rgba(72,190,255,.55);
+  border-radius:4px;color:var(--cyan-hi);text-decoration:none;font-family:'Orbitron',sans-serif;font-size:.74rem;letter-spacing:.1em;
+}
+.success .back-button:hover{background:rgba(72,190,255,.09)}
+
+.wall{height:100px;margin-top:2.5rem;background:url("assets/wall.png") repeat-x bottom/auto 100px;filter:drop-shadow(0 -6px 24px rgba(72,190,255,.35))}
+footer{padding:2.4rem 5vw 3rem;text-align:center;border-top:1px solid rgba(72,190,255,.18);background:rgba(6,11,22,.72)}
+footer .duck{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.18em;color:var(--pale);margin-bottom:.65rem}
+footer .fine{color:var(--plate);font-size:.84rem}
+
+@media (max-width:820px){
+  .beta-layout{grid-template-columns:1fr;gap:2.5rem}
+  .briefing{text-align:center}
+  .lead{margin-left:auto;margin-right:auto}
+  .turret-wrap{justify-content:center;text-align:left}
+  .transmission{text-align:left}
+  .requirements{width:min(520px,100%);margin-left:auto;margin-right:auto;text-align:left}
+}
+@media (max-width:520px){
+  nav{padding:.7rem 4vw}
+  nav .return{font-size:.82rem}
+  main{padding-left:1rem;padding-right:1rem}
+  .turret-wrap{align-items:flex-start}
+  .form-shell{padding:1.3rem 1rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .eyebrow::before,.turret{animation:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">LAST SIGNAL</a>
+  <span class="spacer"></span>
+  <a class="return" href="index.html">Return to main site</a>
+</nav>
+
+<main>
+  <div class="beta-layout">
+    <section class="briefing" aria-labelledby="beta-title">
+      <div class="eyebrow">Android closed beta</div>
+      <h1 class="neon" id="beta-title">THE SIGNAL<br>NEEDS YOU</h1>
+      <p class="lead">Play LAST SIGNAL before release, push the build until something breaks, and help shape what reaches Google Play.</p>
+
+      <div class="turret-wrap">
+        <img class="turret" src="assets/turret.png" alt="The Warden Sol turret with a glowing cyan core">
+        <div class="transmission">
+          <strong>Tester transmission</strong>
+          Requests are added manually. Once your account is approved, Nucky Duck Gaming will send the official Google Play opt-in link to this address and remove it from the temporary signup queue.
+        </div>
+      </div>
+
+      <div class="requirements" aria-label="Beta requirements">
+        <div class="requirement"><span class="mark">01</span><span>Use an Android device with Google Play.</span></div>
+        <div class="requirement"><span class="mark">02</span><span>Enter the email connected to the Google Play account you will install with.</span></div>
+        <div class="requirement"><span class="mark">03</span><span>Watch that inbox for the official Google Play opt-in link after your account is added.</span></div>
+        <div class="requirement"><span class="mark">04</span><span>Expect a work-in-progress build and tell Nucky Duck Gaming what goes wrong.</span></div>
+      </div>
+    </section>
+
+    <section class="form-shell" aria-labelledby="request-title">
+      <div id="form-panel">
+        <h2 id="request-title">REQUEST ACCESS</h2>
+        <p class="form-intro">Enter the Google account you use in the Play Store. That is the only personal information requested.</p>
+
+        <form id="beta-form" autocomplete="on">
+          <div class="field">
+            <label for="google-play-email">Google Play email</label>
+            <input
+              type="email"
+              id="google-play-email"
+              name="google_play_email"
+              autocomplete="email"
+              inputmode="email"
+              maxlength="254"
+              placeholder="player@gmail.com"
+              aria-describedby="email-help retention-note"
+              required
+            >
+            <p class="help" id="email-help">Use the account currently signed into Google Play on your Android device. We will never ask for your Google password.</p>
+          </div>
+
+          <div class="honeypot" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+
+          <button class="submit" id="submit-button" type="submit">Request beta access</button>
+          <p class="form-status" id="form-status" role="alert" aria-live="polite"></p>
+        </form>
+
+        <p class="privacy-note" id="retention-note">Your email is used only to add this account to the closed test and send the official access link. It is deleted from the private signup queue after processing. The account remains on Google Play's tester list only while closed-beta access is active and is removed when the test ends. No marketing emails. <a href="privacy.html">Privacy policy</a></p>
+      </div>
+
+      <div class="success" id="success-panel" tabindex="-1" hidden>
+        <div class="success-icon" aria-hidden="true">✓</div>
+        <h2 class="neon">SIGNAL RECEIVED</h2>
+        <p>Your request is in the private signup queue. After this Google account is added to the tester list, Nucky Duck Gaming will send the official Google Play opt-in link to the same address.</p>
+        <p class="small">The temporary signup record is deleted after the access instructions are sent.</p>
+        <a class="back-button" href="index.html">Return to LAST SIGNAL</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="wall" role="presentation"></div>
+
+<footer>
+  <div class="duck">NUCKY DUCK GAMING</div>
+  <p class="fine">&copy; 2026 Nucky Duck Gaming. LAST SIGNAL is currently in development.</p>
+</footer>
+
+<script>
+(() => {
+  const endpoint = 'https://script.google.com/macros/s/AKfycbzY0_Q6xYrDe4POlW7to2zmMTsLf4Uw-6IKSunMxECi_WOXCcVSGuZdGDqfm0oF3-s/exec';
+  const form = document.getElementById('beta-form');
+  const formPanel = document.getElementById('form-panel');
+  const successPanel = document.getElementById('success-panel');
+  const submitButton = document.getElementById('submit-button');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    if (!form.reportValidity()) return;
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'TRANSMITTING...';
+    status.textContent = '';
+
+    const emailInput = document.getElementById('google-play-email');
+    emailInput.value = emailInput.value.trim().toLowerCase();
+
+    const body = new URLSearchParams();
+    for (const [key, value] of new FormData(form).entries()) {
+      body.append(key, String(value));
+    }
+
+    try {
+      await fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        redirect: 'follow',
+        body
+      });
+
+      form.reset();
+      formPanel.hidden = true;
+      successPanel.hidden = false;
+      successPanel.focus();
+      successPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (error) {
+      console.error(error);
+      status.textContent = 'The transmission failed. Check your connection and try again.';
+      submitButton.disabled = false;
+      submitButton.textContent = 'REQUEST BETA ACCESS';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

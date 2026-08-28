@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LAST SIGNAL — Nucky Duck Gaming</title>
-<meta name="description" content="LAST SIGNAL — a neon sci-fi tower defense. Hold the wall. Keep broadcasting. Coming soon to Google Play.">
+<meta name="description" content="LAST SIGNAL — a neon sci-fi tower defense. Hold the wall. Keep broadcasting. Closed beta recruiting now for Android.">
 <link rel="icon" type="image/png" href="assets/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,6 +47,8 @@ nav{
 nav .brand{font-family:'Orbitron'; font-weight:900; font-size:1.05rem; color:var(--cyan-hi); text-decoration:none; letter-spacing:.12em}
 nav a.link{color:var(--plate); text-decoration:none; font-weight:600; letter-spacing:.08em; font-size:.95rem}
 nav a.link:hover{color:var(--cyan-hi)}
+nav a.beta-link{color:var(--orange)}
+nav a.beta-link:hover{color:#ffd5b1}
 nav .spacer{flex:1}
 
 /* ---- hero ---- */
@@ -66,6 +68,11 @@ nav .spacer{flex:1}
   border:1px solid var(--cyan); border-radius:4px; color:var(--cyan-hi);
   letter-spacing:.22em; font-weight:600; font-size:.95rem; text-transform:uppercase;
   box-shadow:0 0 18px rgba(72,190,255,.35), inset 0 0 18px rgba(72,190,255,.12);
+  text-decoration:none; transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+}
+.soon:hover{
+  transform:translateY(-2px); background:rgba(72,190,255,.12);
+  box-shadow:0 0 28px rgba(72,190,255,.48), inset 0 0 22px rgba(72,190,255,.15);
 }
 
 /* ---- energy wall divider ---- */
@@ -111,6 +118,26 @@ section .sub{color:var(--plate); text-align:center; max-width:640px; margin:0 au
 .chip.now{border-color:var(--cyan); color:var(--cyan-hi); box-shadow:0 0 14px rgba(72,190,255,.3)}
 .chip.later{opacity:.65}
 
+/* ---- beta call to action ---- */
+.beta-cta{padding-top:3rem;padding-bottom:6.5rem}
+.beta-panel{
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:1.6rem;align-items:center;
+  padding:clamp(1.4rem,4vw,2.4rem);border:1px solid rgba(72,190,255,.42);border-radius:8px;
+  background:linear-gradient(180deg,rgba(28,45,72,.76),rgba(10,20,40,.94));
+  box-shadow:0 18px 58px rgba(0,0,0,.42),0 0 35px rgba(72,190,255,.13);
+}
+.beta-panel img{width:95px;filter:drop-shadow(0 0 18px rgba(72,190,255,.45))}
+.beta-copy .eyebrow{color:var(--orange);font-family:'Orbitron';font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.beta-copy h2{text-align:left;margin:.3rem 0 .45rem;font-size:clamp(1.25rem,3vw,1.85rem)}
+.beta-copy p{color:var(--plate)}
+.beta-button{
+  display:inline-block;padding:.85rem 1.25rem;border:1px solid var(--cyan);border-radius:5px;
+  color:#fff;background:rgba(72,190,255,.12);text-decoration:none;white-space:nowrap;
+  font-family:'Orbitron';font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  box-shadow:0 0 18px rgba(72,190,255,.27);transition:transform .15s ease,background .15s ease,box-shadow .15s ease;
+}
+.beta-button:hover{transform:translateY(-2px);background:rgba(72,190,255,.22);box-shadow:0 0 28px rgba(72,190,255,.42)}
+
 /* ---- footer ---- */
 footer{
   margin-top:4rem; padding:3rem 5vw 3.4rem; text-align:center;
@@ -120,6 +147,24 @@ footer .duck{font-family:'Orbitron'; font-weight:700; letter-spacing:.18em; colo
 footer a{color:var(--cyan-hi); text-decoration:none}
 footer a:hover{text-decoration:underline}
 footer .fine{margin-top:1.1rem; color:var(--plate); font-size:.85rem}
+
+@media (max-width:760px){
+  .beta-panel{grid-template-columns:auto 1fr}
+  .beta-button{grid-column:1/-1;text-align:center}
+}
+@media (max-width:650px){
+  nav{gap:.85rem;padding:.65rem 4vw}
+  nav a.link:not(.beta-link):not([href="privacy.html"]){display:none}
+}
+@media (max-width:480px){
+  .beta-panel{grid-template-columns:1fr;text-align:center}
+  .beta-panel img{margin:0 auto}
+  .beta-copy h2{text-align:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .hero .turret,.wall{animation:none}
+}
 </style>
 </head>
 <body>
@@ -130,6 +175,7 @@ footer .fine{margin-top:1.1rem; color:var(--plate); font-size:.85rem}
   <a class="link" href="#features">Features</a>
   <a class="link" href="#media">Media</a>
   <a class="link" href="#roadmap">Roadmap</a>
+  <a class="link beta-link" href="beta.html">Join Beta</a>
   <a class="link" href="privacy.html">Privacy</a>
 </nav>
 
@@ -137,7 +183,7 @@ footer .fine{margin-top:1.1rem; color:var(--plate); font-size:.85rem}
   <h1 class="neon">LAST&nbsp;SIGNAL</h1>
   <p class="tag">Hold the wall &middot; Keep broadcasting</p>
   <img class="turret" src="assets/turret.png" alt="The Warden Sol turret, cyan core glowing">
-  <span class="soon neon-orange">Coming soon to Google Play</span>
+  <a class="soon neon-orange" href="beta.html">Closed Beta &mdash; Join Now</a>
 </header>
 
 <div class="wall" role="presentation"></div>
@@ -183,12 +229,24 @@ footer .fine{margin-top:1.1rem; color:var(--plate); font-size:.85rem}
   <h2 class="neon">Signal roadmap</h2>
   <p class="sub">Where the broadcast goes next.</p>
   <div class="roadmap">
-    <span class="chip now">Open beta</span>
+    <span class="chip now">Closed beta</span>
     <span class="chip">Campaign to stage 100</span>
     <span class="chip">Elite enemies</span>
     <span class="chip">Quest-driven season pass</span>
     <span class="chip later">Guilds &amp; raid bosses</span>
     <span class="chip later">PvP</span>
+  </div>
+</section>
+
+<section class="beta-cta" id="beta">
+  <div class="beta-panel">
+    <img src="assets/turret.png" alt="" aria-hidden="true">
+    <div class="beta-copy">
+      <div class="eyebrow">Android closed beta</div>
+      <h2 class="neon">The signal needs testers</h2>
+      <p>One field: the Google Play email you will use. It stays in a private pending queue only until beta access is processed.</p>
+    </div>
+    <a class="beta-button" href="beta.html">Request beta access</a>
   </div>
 </section>
 
